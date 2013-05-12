@@ -7,8 +7,13 @@
 //
 
 #import "lxkAppDelegate.h"
+#import "lxkFirstViewController.h"
+
 
 @implementation lxkAppDelegate
+
+@synthesize navController;
+
 
 - (void)dealloc
 {
@@ -20,14 +25,23 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+    self.FirsrView =
+    [[lxkFirstViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
+    self.navController = [[UINavigationController alloc] init];
+    
+    
+    [self.navController pushViewController:self.FirsrView animated:YES];
+    [self.window addSubview:self.navController.view];
+    //self.window.rootViewController = firstController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
@@ -52,9 +66,5 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
--(void)applicationDidFinishLaunching:(UIApplication *)application
-{
-    
-}
 
 @end
